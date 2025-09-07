@@ -14,4 +14,9 @@ class Proyecto extends Model
         'monto',
         'created_by',
     ];
+
+    public function usuario()
+    {
+        return $this->belongsTo(User::class, 'created_by');
+    }
 }

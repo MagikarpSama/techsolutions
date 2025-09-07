@@ -9,7 +9,8 @@ class ProyectoApiController extends Controller
 {
     public function index()
     {
-        return Proyecto::all();
+        $proyectos = Proyecto::all();
+        return response()->json($proyectos, 200);
     }
 
     public function store(Request $request)
@@ -35,7 +36,7 @@ class ProyectoApiController extends Controller
         if (!$proyecto) {
             return response()->json(['error' => 'Proyecto no encontrado'], 404);
         }
-        return $proyecto;
+        return response()->json($proyecto, 200);
     }
 
     public function update(Request $request, $id)
@@ -55,7 +56,7 @@ class ProyectoApiController extends Controller
             'nombre.unique' => 'No se pueden crear proyectos con el mismo nombre',
         ]);
         $proyecto->update($validated);
-        return response()->json($proyecto);
+        return response()->json($proyecto, 200);
     }
 
     public function destroy($id)
@@ -64,7 +65,7 @@ class ProyectoApiController extends Controller
         if (!$proyecto) {
             return response()->json(['error' => 'Proyecto no encontrado'], 404);
         }
-        $proyecto->delete();
-        return response()->json(['message' => 'Proyecto eliminado']);
+    $proyecto->delete();
+    return response()->json(['message' => 'Proyecto eliminado correctamente'], 200);
     }
 }

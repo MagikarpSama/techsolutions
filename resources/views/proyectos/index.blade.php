@@ -15,6 +15,7 @@
                 <th>Estado</th>
                 <th>Responsable</th>
                 <th>Monto</th>
+                <th>Usuario Creador</th>
                 <th>Acciones</th>
             </tr>
         </thead>
@@ -27,6 +28,7 @@
                 <td>{{ $proyecto->estado }}</td>
                 <td>{{ $proyecto->responsable }}</td>
                 <td>{{ $proyecto->monto }}</td>
+                <td>{{ $proyecto->usuario ? $proyecto->usuario->name : 'Sin usuario' }}</td>
                 <td>
                     <a href="{{ route('proyectos.show', $proyecto) }}" class="btn btn-info btn-sm">Ver</a>
                     <a href="{{ route('proyectos.edit', $proyecto) }}" class="btn btn-warning btn-sm">Editar</a>
